@@ -10,7 +10,8 @@ class Tour extends Model
     protected $fillable = [
         'id', 'slug', 'name'
     ];
-  public function bookings()
+    
+    public function bookings()
     {
         return $this->hasMany(Booking::class);
     }

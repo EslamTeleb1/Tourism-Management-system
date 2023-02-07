@@ -27,7 +27,9 @@ class Booking extends Model
 
      public function tourInfo()
        {
+
         return $this->belongsTo(Tour::class);
+        
        }
 
     use HasFactory;
