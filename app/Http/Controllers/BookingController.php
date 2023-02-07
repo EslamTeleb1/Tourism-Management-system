@@ -9,14 +9,15 @@ class BookingController extends Controller
 {
     public function store(Request $request)
     {
-        $quantity = $request->input('quantity');
-        $totalPrice = Booking::calculatePrice($quantity);
+        $adults = $request->input('adults');
+        $totalPrice = Booking::calculatePrice($adults);
 
         $booking = Booking::create([
+            'tour_id'=>$request->input('tour_id'),
             'email' => $request->input('email'),
             'name' => $request->input('name'),
             'phone' => $request->input('phone'),
-            'quantity' => $quantity,
+            'adults' => $adults,
             'total_price' => $totalPrice,
         ]);
 
@@ -51,14 +52,15 @@ public function update(Request $request, $id)
         return response()->json(['message' => 'Booking not found'], 404);
     }
 
-    $quantity = $request->input('quantity');
-    $totalPrice = Booking::calculatePrice($quantity);
+    $adults = $request->input('adults');
+    $totalPrice = Booking::calculatePrice($adults);
 
     $booking->update([
+        'tour_id'=>$request->input('tour_id'),
         'email' => $request->input('email'),
         'name' => $request->input('name'),
         'phone' => $request->input('phone'),
-        'quantity' => $quantity,
+        'adults' => $adults,
         'total_price' => $totalPrice,
     ]);
 

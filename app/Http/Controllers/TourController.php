@@ -21,41 +21,41 @@ class TourController extends Controller
 
     //------------------
     public function show($id)
-{
-    $tourInformation = Tour::find($id);
+   {
+        $tourInformation = Tour::find($id);
 
-    if (!$tourInformation) {
-        return response()->json(['message' => 'Tour Information not found'], 404);
+        if (!$tourInformation) {
+            return response()->json(['message' => 'Tour Information not found'], 404);
+        }
+
+        return $tourInformation;
+     }
+
+   public function update(Request $request, $id)
+     {
+        $tourInformation = Tour::find($id);
+
+        if (!$tourInformation) {
+            return response()->json(['message' => 'Tour Information not found'], 404);
+        }
+
+        $tourInformation->update($request->all());
+
+        return response()->json($tourInformation, 200);
+     }
+
+    public function destroy($id)
+    {
+        $tourInformation = Tour::find($id);
+
+        if (!$tourInformation) {
+            return response()->json(['message' => 'Tour Information not found'], 404);
+        }
+
+        $tourInformation->delete();
+
+        return response()->json(null, 204);
     }
-
-    return $tourInformation;
-}
-
-public function update(Request $request, $id)
-{
-    $tourInformation = Tour::find($id);
-
-    if (!$tourInformation) {
-        return response()->json(['message' => 'Tour Information not found'], 404);
-    }
-
-    $tourInformation->update($request->all());
-
-    return response()->json($tourInformation, 200);
-}
-
-public function destroy($id)
-{
-    $tourInformation = Tour::find($id);
-
-    if (!$tourInformation) {
-        return response()->json(['message' => 'Tour Information not found'], 404);
-    }
-
-    $tourInformation->delete();
-
-    return response()->json(null, 204);
-}
 
 
 }
