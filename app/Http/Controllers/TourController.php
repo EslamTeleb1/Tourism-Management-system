@@ -13,10 +13,18 @@ class TourController extends Controller
         return Tour::all();
     }
 
-    public function store(Request $request)
+    public function createTour(Request $request)
     {
-        $Tour = Tour::create($request->all());
-        return response()->json($Tour, 201);
+        $name = [
+            "ar"=>$request->name_ar,
+            "en"=>$request->name_en
+          ];
+        $tour =new Tour();
+        $tour->name=$name;
+        $tour->slug=str_slug($request->name_en, '-');
+        $tour->save();
+        return response()->json('success', 201);
+       
     }
 
     //------------------

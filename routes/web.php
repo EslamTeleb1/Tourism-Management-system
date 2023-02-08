@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use  App\Http\Controllers;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +14,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use  App\Http\Controllers\TourController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/create_tour', function () {
+    return view('createTour');
+});
+
+Route::post('/createTour', [TourController::class, 'createTour']);

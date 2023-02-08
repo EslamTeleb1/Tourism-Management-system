@@ -11,6 +11,10 @@ class Tour extends Model
         'id', 'slug', 'name'
     ];
     
+      protected $casts = [
+        'name'=>'array'
+    ];
+
     public function bookings()
     {
         return $this->hasMany(Booking::class);
