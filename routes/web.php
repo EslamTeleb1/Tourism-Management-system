@@ -15,6 +15,8 @@ use  App\Http\Controllers;
 |
 */
 use  App\Http\Controllers\TourController;
+use  App\Http\Controllers\BookingController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,3 +27,11 @@ Route::get('/create_tour', function () {
 });
 
 Route::post('/createTour', [TourController::class, 'createTour']);
+
+Route::get('/book_tour', function(){
+    return view('bookTour');
+});
+
+Route::post('/book_tour', [BookingController::class, 'store']);
+
+

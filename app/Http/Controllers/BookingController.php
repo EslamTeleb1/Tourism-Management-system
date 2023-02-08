@@ -9,14 +9,14 @@ class BookingController extends Controller
 {
     public function store(Request $request)
     {
-        $adults = $request->input('adults');
+        $adults = $request->adults;
         $totalPrice = Booking::calculatePrice($adults);
 
         $booking = Booking::create([
-            'tour_id'=>$request->input('tour_id'),
-            'email' => $request->input('email'),
-            'name' => $request->input('name'),
-            'phone' => $request->input('phone'),
+            'tour_id'=>$request->tour_id,
+            'email' => $request->email,
+            'name' => $request->name,
+            'phone' => $request->phone,
             'adults' => $adults,
             'total_price' => $totalPrice,
         ]);

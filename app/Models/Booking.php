@@ -12,7 +12,7 @@ class Booking extends Model
         'tour_id', 'email', 'name', 'phone', 'adults','total_price',
     ];
 
-      public function calculatePrice($adults)
+      public static function calculatePrice($adults)
       {
         if ($adults == 1) {
             return 120;
