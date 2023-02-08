@@ -21,6 +21,9 @@ class Booking extends Model
         } elseif ($adults >= 4 && $adults <= 6) {
             return 90;
         }
+        elseif ($adults > 6) {
+            return 80;
+        }
 
         return 0;
       }

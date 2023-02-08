@@ -55,21 +55,25 @@ use Illuminate\Support\MessageBag;
          let tour_name_ar = $("input[name=tour_name_ar]").val(); 
          let tour_name_en = $("input[name=tour_name_en]").val(); 
      
-        let tour_names=[tour_name_ar,tour_name_en];
+        //let tour_names=[tour_name_ar,tour_name_en];
           
        $.ajax({
           url: `createTour`,
           type:"POST",
-          //contentType: "application/json",
-          headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+         
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+           // 'content-type':'text/html'
+          },
           data:{
           _token : $('meta[name="csrf-token"]').attr('content'),
 
-            names:tour_names
+            name_ar:tour_name_ar,
+            name_en:tour_name_en
 
            }
             ,
-        success:function(data){
+              success:function(data){
 
         
                   

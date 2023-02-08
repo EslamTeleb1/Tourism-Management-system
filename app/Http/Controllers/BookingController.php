@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Redirect;
+use Session;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Booking;
 
@@ -9,9 +11,19 @@ class BookingController extends Controller
 {
     public function store(Request $request)
     {
+          $validator = Validator::make($request->all(), [
+                'tour_id' => 'required',
+                'email' => 'required',
+                'phone' => 'required',
+                'adults' => 'required',                  
+            ]);
+
+     if ($validator->passes()) {
+
+
         $adults = $request->adults;
         $totalPrice = Booking::calculatePrice($adults);
-
+        $totalPrice *=$adults;
         $booking = Booking::create([
             'tour_id'=>$request->tour_id,
             'email' => $request->email,
@@ -21,8 +33,16 @@ class BookingController extends Controller
             'total_price' => $totalPrice,
         ]);
 
-        return response()->json($booking, 201);
-    }
+          return redirect('/');
+     // return view('bookTour')->withErrors(['msg' => 'The Message']);
+       // return Redirect::back()->withErrors(['msg' => 'The Message']);        }
+
+    //   if($validator->fails()) {
+    //         return Redirect::back()->withErrors($validator);
+    //    }
+
+       }
+  }
 
         
 
