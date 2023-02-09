@@ -17,7 +17,7 @@ class TourController extends Controller
     {
         $name = [
             "ar"=>$request->name_ar,
-            "en"=>$request->name_en
+            "en"=>$request->name_en,
           ];
         $tour =new Tour();
         $tour->name=$name;
@@ -47,7 +47,15 @@ class TourController extends Controller
             return response()->json(['message' => 'Tour Information not found'], 404);
         }
 
-        $tourInformation->update($request->all());
+        $name = [
+            "ar"=>$request->name_ar,
+            "en"=>$request->name_en,
+          ];
+
+        $tourInformation->name=$name;
+        $tourInformation->slug=str_slug($request->name_en, '-');
+
+        $tourInformation->update();
 
         return response()->json($tourInformation, 200);
      }

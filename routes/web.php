@@ -38,9 +38,24 @@ Route::get('/bookings', function(){
     return view('bookings');
 });
 
-Route::post('/del_tour/{id}', [BookingController::class, 'destroy']);
-
 Route::get('/update_booked_tour', function(){
     return view('updateBooked');
 });
 Route::post('/update_booked_tour/{id}',[BookingController::class, 'update']);
+
+Route::get('/tours', function(){
+    return view('tours');
+});
+
+Route::get('/show_tours', function(){
+    return view('tours');
+});
+
+Route::get('/update_tour', function(){
+    return view('updateTour');
+});
+Route::post('/updateTour/{id}', [TourController::class, 'update']);
+
+Route::post('/del_booked/{id}', [BookingController::class, 'destroy']);
+
+Route::post('/del_tour/{id}', [TourController::class, 'destroy']);

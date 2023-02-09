@@ -2,7 +2,9 @@
 
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Support\MessageBag;
-
+use App\Models\Tour;
+$tour= Tour::find(request()->get('tour_id'));
+//echo $tour;
 
 ?>
 <!doctype html>
@@ -27,14 +29,15 @@ use Illuminate\Support\MessageBag;
          <form method="POST" onsubmit="return false">
            @csrf
                 <div class="mb-3">
-                    <label for="tour_name" class="form-label">tourName (ar)</label>
-                    <input type="text" class="form-control" name="tour_name_ar" >
+                    <label for="tour_name" class="form-label" >tourName (ar)</label>
+                    <input type="text" class="form-control" value="{{ $tour->name['ar'] }}" name="tour_name_ar" >
                 </div>
                  <div class="mb-3">
                     <label for="tour_name" class="form-label">tourName (en)</label>
-                    <input type="text" class="form-control" name="tour_name_en" >
+                    <input type="text" class="form-control" value="{{ $tour->name['en'] }}" name="tour_name_en" >
                 </div>
-                <button  id="submitBtn" class="btn btn-primary">Create</button>
+                <p>Note : tour slug is auto created depend on the english name </p>
+                <button  id="submitBtn" onClick="updateTour({{$tour->id}})" class="btn btn-primary">Update Tour</button>
             </form>
          </div>
 
@@ -44,15 +47,15 @@ use Illuminate\Support\MessageBag;
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
 
   <script>
-    $('#submitBtn').on('click', ()=> { 
 
+     const updateTour= (id)=>{
 
          let tour_name_ar = $("input[name=tour_name_ar]").val(); 
          let tour_name_en = $("input[name=tour_name_en]").val(); 
             
           
        $.ajax({
-          url: `createTour`,
+          url: `updateTour/${id}`,
           type:"POST",
          
           headers: {
@@ -74,8 +77,8 @@ use Illuminate\Support\MessageBag;
         error: function (){ alert('error');}
             
             }); 
-
  
-      })
+        }
+
     </script>
 </html>

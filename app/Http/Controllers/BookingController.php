@@ -36,10 +36,6 @@ class BookingController extends Controller
        }
   }
 
-        
-
-
-
     public function index()
         {
             return Booking::all();
@@ -66,7 +62,7 @@ public function update(Request $request, $id)
 
     $adults = $request->adults;
     $totalPrice = Booking::calculatePrice($adults);
-
+    $totalPrice*=$adults;
     $booking->update([
         'tour_id'=>$request->tour_id,
         'email' => $request->email,

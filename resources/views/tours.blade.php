@@ -2,9 +2,10 @@
 
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Support\MessageBag;
-use App\Models\Booking;
-$BookedTours =Booking::all();
-
+use App\Models\Tour;
+$Tour =Tour::all();
+$lang =request()->get('lang');
+// echo $Tour;
    ?>
 <!doctype html>
 <html lang="en">
@@ -12,7 +13,7 @@ $BookedTours =Booking::all();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Bookings</title>
+    <title>Tours</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     
   </head>
@@ -28,37 +29,29 @@ $BookedTours =Booking::all();
     </style>
   <body>
     <div style="margin-top:20px;"></div>
-       <div class="container" style="padding-left:300px">
-         <h2>Booked tours</h2>
-           <p>numbr of the booked tousr is {{ count($BookedTours) }} </p>
-           <a class="btn bg-light" href="/show_tours">Book a Tour</a>
+       <div class="" style="padding-left:300px">
+         <h2>The Tours</h2>
+           <p>numbr of the tours is {{count ($Tour)}} </p>
+            <a class="btn bg-light" href="/create_tour">Add a new Tour</a>
         <div class=" formWidth col-sm-4" >
             <table class="table">
                     <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>tour_id</th>
-                                <th>E-mail</th>
                                 <th>Name</th>
-                                <th>Phone</th>
-                                <th>Adults</th>
-                                <th>Total Price</th>
-                                <th>delete</th>
-                                <th>update</th>
+                                <th style="min-width:200px">Slug</th>
+                                <th>delete</th> 
+                                <th>updata<th> 
                             </tr>
                         </thead >
                 <tbody>
-                    @foreach($BookedTours as $booked)
-                    <tr id="tour_id_{{ $booked->id}}" >
-                        <td scope="row">{{ $booked->id  }}</td>
-                        <td >{{ $booked->tour_id  }}</td>
-                        <td>{{ $booked->email }}</td>
-                        <td>{{ $booked->name}}</td>
-                        <td>{{ $booked->phone}}</td>
-                        <td>{{ $booked->adults}}</td>
-                        <td>{{ $booked->total_price}}</td>
-                        <td><button id="del" class="btn" onClick="delbookedTour({{ $booked->id  }})"> Delete</button></td>
-                        <td><a id="update" href="/update_booked_tour?tour_id={{ $booked->tour_id }}&booked_id={{$booked->id}}" class="btn"> Update</a></td>
+                    @foreach($Tour as $tour)
+                    <tr id="tour_id_{{$tour->id}}" >
+                    <td >{{$tour->id  }}</td>
+                    <td >{{$tour->name[$lang]}}</td>
+                    <td >{{$tour->slug  }}</td>
+                    <td ><button id="del" class="btn" onClick="delTour({{ $tour->id  }})"> Delete</button></td>
+                    <td ><a id="update" href="/update_tour?tour_id={{ $tour->id}}" class="btn"> Update</a></td>
 
                     </tr>
                     @endforeach
@@ -79,11 +72,11 @@ $BookedTours =Booking::all();
 
   <script>
 
-   const delbookedTour =(id)=>{
+   const delTour =(id)=>{
           
        $.ajax({
 
-          url: `del_booked/${id}`,
+          url: `del_tour/${id}`,
           type:"POST",
          
           headers: {
@@ -95,10 +88,14 @@ $BookedTours =Booking::all();
            }
             ,
               success:function(data){
+
+                alert("sucess");
+                window.location.reload()
    
                   },
 
-        error: function (){ alert('error');}
+        error: function (){ 
+            alert('error');}
             
             }); 
 

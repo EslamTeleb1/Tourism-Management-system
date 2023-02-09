@@ -2,7 +2,7 @@
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Support\MessageBag;
 use App\Models\Booking;
-$BookedTour= Booking::find($_GET['booked_id']);
+$BookedTour= Booking::find(request()->get('booked_id'));
 //echo $BookedTour;
 ?>
 <!doctype html>
@@ -101,7 +101,7 @@ $BookedTour= Booking::find($_GET['booked_id']);
             ,
         success:function(data){
 
-        
+            alert("sucess");
                   
                   },
 
