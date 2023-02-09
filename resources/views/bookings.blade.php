@@ -57,7 +57,7 @@ $BookedTours =Booking::all();
                         <td>{{ $booked->adults}}</td>
                         <td>{{ $booked->total_price}}</td>
                         <td><button id="del" class="btn" onClick="deleteTour({{ $booked->id  }})"> Delete</button></td>
-                        <td><a id="update" href="/book_tour?tour_id={{ $booked->id}}&booked_id={{$booked->id}}" class="btn"> Update</a></td>
+                        <td><a id="update" href="/update_booked_tour?tour_id={{ $booked->tour_id }}&booked_id={{$booked->id}}" class="btn"> Update</a></td>
 
                     </tr>
                     @endforeach

@@ -64,14 +64,14 @@ public function update(Request $request, $id)
         return response()->json(['message' => 'Booking not found'], 404);
     }
 
-    $adults = $request->input('adults');
+    $adults = $request->adults;
     $totalPrice = Booking::calculatePrice($adults);
 
     $booking->update([
-        'tour_id'=>$request->input('tour_id'),
-        'email' => $request->input('email'),
-        'name' => $request->input('name'),
-        'phone' => $request->input('phone'),
+        'tour_id'=>$request->tour_id,
+        'email' => $request->email,
+        'name' => $request->name,
+        'phone' => $request->phone,
         'adults' => $adults,
         'total_price' => $totalPrice,
     ]);

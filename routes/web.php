@@ -39,3 +39,8 @@ Route::get('/bookings', function(){
 });
 
 Route::post('/del_tour/{id}', [BookingController::class, 'destroy']);
+
+Route::get('/update_booked_tour', function(){
+    return view('updateBooked');
+});
+Route::post('/update_booked_tour/{id}',[BookingController::class, 'update']);
