@@ -3,7 +3,17 @@
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Support\MessageBag;
 use App\Models\Booking;
-$BookedTours =Booking::all();
+
+if(request()->get('tour_id'))
+  {
+     $tour_id =request()->get('tour_id');
+     $BookedTours = Booking::all()->where('tour_id','=',$tour_id);
+
+  }
+  else 
+  {
+   $BookedTours =Booking::all();
+  }
 $lang =request()->get('lang');
    ?>
 <!doctype html>
@@ -30,7 +40,7 @@ $lang =request()->get('lang');
     <div style="margin-top:20px;"></div>
        <div class="container" style="padding-left:300px">
          <h2>Booked tours</h2>
-           <p>numbr of the booked tousr is {{ count($BookedTours) }} </p>
+           <p>numbr of the booked tours is  @if($BookedTours) {{ count($BookedTours) }}@endif </p>
            <a class="btn bg-light" href="/show_tours?lang={{$lang}}">Book a Tour</a>
         <div class=" formWidth col-sm-4" >
             <table class="table">
@@ -48,6 +58,7 @@ $lang =request()->get('lang');
                             </tr>
                         </thead >
                 <tbody>
+                  @if($BookedTours)
                     @foreach($BookedTours as $booked)
                     <tr id="tour_id_{{ $booked->id}}" >
                         <td scope="row">{{ $booked->id  }}</td>
@@ -61,7 +72,10 @@ $lang =request()->get('lang');
                         <td><a id="update" href="/update_booked_tour?tour_id={{ $booked->tour_id }}&booked_id={{$booked->id}}" class="btn"> Update</a></td>
 
                     </tr>
-                    @endforeach
+                     @endforeach
+                    @else
+                    <p>there is no books for this tour <span>tour id = {{$tour_id}}</span></p>
+                  @endif
                             </tbody>
 
 

@@ -29,7 +29,7 @@ $lang =request()->get('lang');
     </style>
   <body>
     <div style="margin-top:20px;"></div>
-       <div class="" style="padding-left:300px">
+       <div class="" style="padding-left:200px">
          <h2>The Tours</h2>
            <p>numbr of the tours is {{count ($Tour)}} </p>
             <a class="btn bg-light" href="/create_tour">Add a new Tour</a>
@@ -40,8 +40,9 @@ $lang =request()->get('lang');
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th style="min-width:200px">Slug</th>
-                                <th>delete</th> 
-                                <th>updata<th> 
+                                <th>Delete</th> 
+                                <th>Updata<th> 
+                                <th style="padding-left:-80px">show Booked tours</th>
                             </tr>
                         </thead >
                 <tbody>
@@ -50,9 +51,9 @@ $lang =request()->get('lang');
                     <td >{{$tour->id  }}</td>
                     <td >{{$tour->name[$lang]}}</td>
                     <td >{{$tour->slug  }}</td>
-                    <td ><button id="del" class="btn" onClick="delTour({{ $tour->id  }})"> Delete</button></td>
-                    <td ><a id="update" href="/update_tour?tour_id={{ $tour->id}}" class="btn"> Update</a></td>
-
+                    <td ><button id="del"  onClick="delTour({{ $tour->id  }})" class="btn bg-light"> Delete</button></td>
+                    <td ><a id="update" href="/update_tour?tour_id={{ $tour->id}}" class="btn bg-light"> Update</a></td>
+                    <td ><a  id="booked_tours" href="/bookings?tour_id={{$tour->id}}&lang={{$lang}}" class="btn bg-light">show</a></td>
                     </tr>
                     @endforeach
                             </tbody>

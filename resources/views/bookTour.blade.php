@@ -106,7 +106,7 @@ use Illuminate\Support\MessageBag;
         success:function(data){
 
         
-                  
+                       alert("sucess")
                   },
 
         error: function ()
