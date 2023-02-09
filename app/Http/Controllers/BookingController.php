@@ -33,14 +33,6 @@ class BookingController extends Controller
             'total_price' => $totalPrice,
         ]);
 
-          return redirect('/');
-     // return view('bookTour')->withErrors(['msg' => 'The Message']);
-       // return Redirect::back()->withErrors(['msg' => 'The Message']);        }
-
-    //   if($validator->fails()) {
-    //         return Redirect::back()->withErrors($validator);
-    //    }
-
        }
   }
 

@@ -34,4 +34,8 @@ Route::get('/book_tour', function(){
 
 Route::post('/book_tour', [BookingController::class, 'store']);
 
+Route::get('/bookings', function(){
+    return view('bookings');
+});
 
+Route::post('/del_tour/{id}', [BookingController::class, 'destroy']);

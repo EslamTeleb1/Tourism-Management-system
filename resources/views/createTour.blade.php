@@ -44,13 +44,6 @@ use Illuminate\Support\MessageBag;
   <script>
     $('#submitBtn').on('click', ()=> { 
 
-             
-      $.ajaxSetup({
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-              
-            }
-        });
 
          let tour_name_ar = $("input[name=tour_name_ar]").val(); 
          let tour_name_en = $("input[name=tour_name_en]").val(); 
@@ -63,7 +56,6 @@ use Illuminate\Support\MessageBag;
          
           headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-           // 'content-type':'text/html'
           },
           data:{
           _token : $('meta[name="csrf-token"]').attr('content'),
