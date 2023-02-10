@@ -18,8 +18,9 @@ use  App\Http\Controllers\TourController;
 use  App\Http\Controllers\BookingController;
 
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/', function(){
+    return view('showTours');
 });
 
 Route::get('/create_tour', function () {
@@ -45,10 +46,6 @@ Route::post('/update_booked_tour/{id}',[BookingController::class, 'update']);
 
 Route::get('/tours', function(){
     return view('tours');
-});
-
-Route::get('/', function(){
-    return view('index');
 });
 
 Route::get('/update_tour', function(){
