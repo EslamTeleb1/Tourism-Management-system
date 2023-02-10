@@ -28,15 +28,14 @@ class TourController extends Controller
     }
 
     //------------------
-    public function show($id)
-   {
-        $tourInformation = Tour::find($id);
+    public function show($slug)
+     {
+        $tourInformation = Tour::all()->where('slug','=',$slug)->first();
 
         if (!$tourInformation) {
             return response()->json(['message' => 'Tour Information not found'], 404);
         }
-
-        return $tourInformation;
+         return view('showTour', ['tour' => $tourInformation]);
      }
 
    public function update(Request $request, $id)

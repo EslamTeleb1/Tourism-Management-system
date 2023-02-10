@@ -14,7 +14,13 @@ if(request()->get('tour_id'))
   {
    $BookedTours =Booking::all();
   }
-$lang =request()->get('lang');
+ if(!session()->get('locale'))
+      {
+        $lang="en";
+      }
+  else {
+      $lang =session()->get('locale') ;
+      }
    ?>
 <!doctype html>
 <html lang="en">
@@ -69,8 +75,8 @@ $lang =request()->get('lang');
                         <td>{{ $booked->phone}}</td>
                         <td>{{ $booked->adults}}</td>
                         <td>{{ $booked->total_price}}</td>
-                        <td><button id="del" class="btn" onClick="delbookedTour({{ $booked->id  }})"> Delete</button></td>
-                        <td><a id="update" href="/update_booked_tour?tour_id={{ $booked->tour_id }}&booked_id={{$booked->id}}" class="btn"> Update</a></td>
+                        <td><button id="del" class="btn bg-light" onClick="delbookedTour({{ $booked->id  }})"> Delete</button></td>
+                        <td><a id="update" href="/update_booked_tour?tour_id={{ $booked->tour_id }}&booked_id={{$booked->id}}" class="btn bg-light"> Update</a></td>
 
                     </tr>
                      @endforeach

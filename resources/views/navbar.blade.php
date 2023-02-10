@@ -9,9 +9,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="/?lang=ar">Home</a>
-        <a class="nav-link" href="/bookings?lang=ar">My Bookings</a>
-        <a class="nav-link" href="/tours?lang=ar">Manage Tours</a>
+        <a class="nav-link active" aria-current="page" href="/">Home</a>
+        <a class="nav-link" href="/bookings">My Bookings</a>
+        <a class="nav-link" href="/tours">Manage Tours</a>
       </div>
            <div class="col-md-4">
                 <select class="form-control Langchange">

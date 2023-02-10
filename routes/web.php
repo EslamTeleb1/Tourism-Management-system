@@ -29,6 +29,8 @@ Route::get('/create_tour', function () {
     return view('createTour');
 });
 
+Route::get('/show_tour/{slug}',[TourController::class, 'show']);
+
 Route::post('/createTour', [TourController::class, 'createTour']);
 
 Route::get('/book_tour', function(){

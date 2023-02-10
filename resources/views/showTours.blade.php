@@ -44,7 +44,7 @@ $Tour =Tour::all();
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th style="min-width:200px">Slug</th>
+                                <th style="min-width:50px">Tour details</th>
                                 <th>Book</th> 
                             </tr>
                         </thead >
@@ -53,8 +53,9 @@ $Tour =Tour::all();
                     <tr id="tour_id_{{$tour->id}}" >
                     <td >{{$tour->id }}</td>
                     <td >{{$tour->name[$lang]}}</td>
-                    <td >{{$tour->slug  }}</td>
-                    <td ><a id="del" class="btn" href="/book_tour?tour_id={{$tour->id}}&lang={{$lang}}"> Book now</a></td>
+                    <td><a class="btn bg-light" href="/show_tour/{{$tour->slug}}">show</a></td>
+
+                    <td ><a id="del" class="btn bg-light" href="/book_tour?tour_id={{$tour->id}}&lang={{$lang}}"> Book now</a></td>
 
                     </tr>
                     @endforeach
