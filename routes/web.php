@@ -31,7 +31,7 @@ Route::get('/create_tour', function () {
 
 Route::get('/show_tour/{slug}',[TourController::class, 'show']);
 
-Route::post('/createTour', [TourController::class, 'createTour']);
+Route::post('/createTour', [TourController::class, 'createTour'])->middleware('auth');
 
 Route::get('/book_tour', function(){
     return view('bookTour');
@@ -50,7 +50,7 @@ Route::post('/update_booked_tour/{id}',[BookingController::class, 'update']);
 
 Route::get('/tours', function(){
     return view('tours');
-});
+})->middleware('auth');
 
 Route::get('/update_tour', function(){
     return view('updateTour');
@@ -60,3 +60,7 @@ Route::post('/updateTour/{id}', [TourController::class, 'update']);
 Route::post('/del_booked/{id}', [BookingController::class, 'destroy']);
 
 Route::post('/del_tour/{id}', [TourController::class, 'destroy']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
