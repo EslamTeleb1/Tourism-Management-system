@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App;
+use Illuminate\Support\Facades\App;
 
 class LocalizationController extends Controller
 {
@@ -10,6 +10,6 @@ class LocalizationController extends Controller
     {
         App::setLocale($request->lang);
         session()->put('locale', $request->lang);  
-        return view('/');
+        return back();
     }
 }

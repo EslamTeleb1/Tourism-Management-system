@@ -16,12 +16,14 @@ use  App\Http\Controllers;
 */
 use  App\Http\Controllers\TourController;
 use  App\Http\Controllers\BookingController;
+use  App\Http\Controllers\LocalizationController;
 
 
 
 Route::get('/', function(){
     return view('showTours');
-});
+})->name("home");
+Route::get('change', [LocalizationController::class,'lang_change'])->name('LangChange');
 
 Route::get('/create_tour', function () {
     return view('createTour');
