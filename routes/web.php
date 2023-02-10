@@ -47,8 +47,8 @@ Route::get('/tours', function(){
     return view('tours');
 });
 
-Route::get('/show_tours', function(){
-    return view('showTours');
+Route::get('/', function(){
+    return view('index');
 });
 
 Route::get('/update_tour', function(){

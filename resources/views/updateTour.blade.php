@@ -24,6 +24,7 @@ $tour= Tour::find(request()->get('tour_id'));
 
     </style>
   <body>
+    @include('navbar')
         <div style="margin-top:100px;"></div>
        <div class="container" style="max-width:500px">
          <form method="POST" onsubmit="return false">

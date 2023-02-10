@@ -28,6 +28,7 @@ $lang =request()->get('lang');
         }
     </style>
   <body>
+    @include('navbar')
     <div style="margin-top:20px;"></div>
        <div class="" style="padding-left:200px">
          <h2>The Tours</h2>

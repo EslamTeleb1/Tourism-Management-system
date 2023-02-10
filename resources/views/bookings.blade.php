@@ -37,11 +37,12 @@ $lang =request()->get('lang');
         }
     </style>
   <body>
+    @include('navbar')
     <div style="margin-top:20px;"></div>
-       <div class="container" style="padding-left:300px">
+       <div class="container" >
          <h2>Booked tours</h2>
            <p>numbr of the booked tours is  @if($BookedTours) {{ count($BookedTours) }}@endif </p>
-           <a class="btn bg-light" href="/show_tours?lang={{$lang}}">Book a Tour</a>
+           <a class="btn bg-light" href="/?lang={{$lang}}">Book a Tour</a>
         <div class=" formWidth col-sm-4" >
             <table class="table">
                     <thead>
@@ -109,10 +110,13 @@ $lang =request()->get('lang');
            }
             ,
               success:function(data){
+
+                 alert("sucess");
+                window.location.reload();
    
                   },
 
-        error: function (){ alert('error');}
+                   error: function (){ alert('error');}
             
             }); 
 
