@@ -13,7 +13,7 @@
         <a class="nav-link" href="/bookings">My Bookings</a>
         <a class="nav-link" href="/tours">Manage Tours</a>
       </div>
-           <div class="col-md-4">
+           <div class="col-md-2">
                 <select class="form-control Langchange">
                     <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>English</option>
                     <option value="ar" {{ session()->get('locale') == 'ar' ? 'selected' : '' }}>عربي</option>                    

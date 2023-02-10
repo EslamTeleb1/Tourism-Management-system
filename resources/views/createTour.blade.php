@@ -2,7 +2,13 @@
 
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Support\MessageBag;
-
+if(!session()->get('locale'))
+      {
+        $lang="en";
+      }
+  else {
+      $lang =session()->get('locale') ;
+      }
 
 ?>
 <!doctype html>
@@ -67,7 +73,8 @@ use Illuminate\Support\MessageBag;
             ,
               success:function(data){
                 
-                  alert("sucess")
+                  alert("sucess");
+                 window.location.reload();
 
                   },
 

@@ -95,9 +95,8 @@ use Illuminate\Support\MessageBag;
            }
             ,
         success:function(data){
-
-        
-                       alert("sucess")
+        alert("sucess");
+         window.location.reload();        
                   },
 
         error: function ()
