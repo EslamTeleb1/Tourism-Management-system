@@ -4,14 +4,14 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Support\MessageBag;
 use App\Models\Tour;
 $Tour =Tour::all();
-  // if(request()->get('lang'))
-  // {
-  //     $lang =request()->get('lang');
-  // }
+  if(request()->get('lang'))
+  {
+      $lang =request()->get('lang');
+  }
    
-  // else {
-  //      $lang="en";
-  //   }
+  else {
+       $lang="en";
+    }
 // echo $Tour;
    ?>
 <!doctype html>
@@ -35,6 +35,7 @@ $Tour =Tour::all();
         }
     </style>
   <body>
+     @include('navbar')
     <div style="margin-top:20px;"></div>
        <div class="" style="padding-left:300px">
          <h2>The Tours</h2>
