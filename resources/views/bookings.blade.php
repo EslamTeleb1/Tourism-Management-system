@@ -41,7 +41,7 @@ $lang =request()->get('lang');
        <div class="container" style="padding-left:300px">
          <h2>Booked tours</h2>
            <p>numbr of the booked tours is  @if($BookedTours) {{ count($BookedTours) }}@endif </p>
-           <a class="btn bg-light" href="/show_tours?lang={{$lang}}">Book a Tour</a>
+           <a class="btn bg-light" href="/?lang={{$lang}}">Book a Tour</a>
         <div class=" formWidth col-sm-4" >
             <table class="table">
                     <thead>
