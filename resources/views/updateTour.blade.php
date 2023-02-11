@@ -4,6 +4,13 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Support\MessageBag;
 use App\Models\Tour;
 $tour= Tour::find(request()->get('tour_id'));
+ if(!session()->get('locale'))
+      {
+        $lang="en";
+      }
+  else {
+      $lang =session()->get('locale') ;
+      }
 //echo $tour;
 
 ?>

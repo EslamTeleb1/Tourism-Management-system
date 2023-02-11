@@ -3,6 +3,13 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Illuminate\Support\MessageBag;
 use App\Models\Booking;
 $BookedTour= Booking::find(request()->get('booked_id'));
+ if(!session()->get('locale'))
+      {
+        $lang="en";
+      }
+  else {
+      $lang =session()->get('locale') ;
+      }
 //echo $BookedTour;
 ?>
 <!doctype html>
