@@ -13,3 +13,13 @@ A small tour management laravel web app that is using to CRUD tours and bookings
 -   tour name changes depend on the langauge
 -   manage tours was added
 -   manage booking was added
+
+## some achievable upgrades 
+
+- add a review about each booking 
+- Add and manage multi vendor for each booking
+- Create reports for the bookings and tours tables
+- Add custom/auth roles for admin and users 
+- UI/UX improvments 
+
+   
