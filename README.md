@@ -25,18 +25,18 @@ A small tour management laravel web app that is using to CRUD tours and bookings
 
 -   Tour
 
-    GET /tour: to retrieve a list of tours.
-    GET /tour/{id}: to retrieve a specific tour by ID.
-    POST /tour: to create a new tour.
-    PUT /tour/{id}: to update an existing tour.
-    DELETE /tour/{id}: to delete a tour.
+  - GET /tour: to retrieve a list of tours.
+  - GET /tour/{id}: to retrieve a specific tour by ID.
+  - POST /tour: to create a new tour.
+  - PUT /tour/{id}: to update an existing tour.
+  - DELETE /tour/{id}: to delete a tour.
 
 -   Booking
-    GET /booking: to retrieve a list of bookings.
-    GET /booking/{id}: to retrieve a specific booking by ID.
-    POST /booking: to create a new booking.
-    PUT /booking/{id}: to update an existing booking.
-    DELETE /booking/{id}: to delete a booking.
+   -  GET /booking: to retrieve a list of bookings.
+   -  GET /booking/{id}: to retrieve a specific booking by ID.
+   -  POST /booking: to create a new booking.
+   -  PUT /booking/{id}: to update an existing booking.
+   -  DELETE /booking/{id}: to delete a booking.
 
 ## some achievable upgrades
 
