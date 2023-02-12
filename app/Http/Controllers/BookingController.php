@@ -32,9 +32,16 @@ class BookingController extends Controller
             'adults' => $adults,
             'total_price' => $totalPrice,
         ]);
-
+           return response()->json($booking, 200);
        }
-  }
+       else  
+            {
+            return response()->json(['message' => $validator->error], 400);
+
+            }
+
+       
+   }
 
     public function index()
         {
@@ -52,40 +59,40 @@ class BookingController extends Controller
             return $booking;
         }
 
-public function update(Request $request, $id)
-{
-    $booking = Booking::find($id);
+    public function update(Request $request, $id)
+    {
+        $booking = Booking::find($id);
 
-    if (!$booking) {
-        return response()->json(['message' => 'Booking not found'], 404);
+        if (!$booking) {
+            return response()->json(['message' => 'Booking not found'], 404);
+        }
+
+        $adults = $request->adults;
+        $totalPrice = Booking::calculatePrice($adults);
+        $totalPrice*=$adults;
+        $booking->update([
+            'tour_id'=>$request->tour_id,
+            'email' => $request->email,
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'adults' => $adults,
+            'total_price' => $totalPrice,
+        ]);
+
+        return response()->json($booking, 200);
+   }
+
+    public function destroy($id)
+    {
+        $booking = Booking::find($id);
+
+        if (!$booking) {
+            return response()->json(['message' => 'Booking not found'], 404);
+        }
+
+        $booking->delete();
+
+        return response()->json(null, 204);
     }
 
-    $adults = $request->adults;
-    $totalPrice = Booking::calculatePrice($adults);
-    $totalPrice*=$adults;
-    $booking->update([
-        'tour_id'=>$request->tour_id,
-        'email' => $request->email,
-        'name' => $request->name,
-        'phone' => $request->phone,
-        'adults' => $adults,
-        'total_price' => $totalPrice,
-    ]);
-
-    return response()->json($booking, 200);
-}
-
-public function destroy($id)
-{
-    $booking = Booking::find($id);
-
-    if (!$booking) {
-        return response()->json(['message' => 'Booking not found'], 404);
     }
-
-    $booking->delete();
-
-    return response()->json(null, 204);
-}
-
-}

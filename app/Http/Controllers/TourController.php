@@ -1,9 +1,10 @@
 <?php
-
+namespace App\Http\Controllers\Api;
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
+use App\Services\PayUService\Exception;
 use App\Models\Tour;
 
 class TourController extends Controller
@@ -15,15 +16,30 @@ class TourController extends Controller
 
     public function createTour(Request $request)
     {
-        $name = [
+        
+           $validator = Validator::make($request->all(), [
+                'name_ar' => 'required',
+                'name_en' => 'required',                
+            ]);
+
+
+         $name = [
             "ar"=>$request->name_ar,
             "en"=>$request->name_en,
           ];
-        $tour =new Tour();
-        $tour->name=$name;
-        $tour->slug=str_slug($request->name_en, '-');
-        $tour->save();
-        return response()->json('success', 201);
+
+          try{
+                $tour =new Tour();
+                $tour->name=$name;
+                $tour->slug=str_slug($request->name_en, '-');
+                $tour->save();
+                return response()->json('success', 201);
+          }
+         catch(\Exception $e) {
+
+                    return $e->getMessage();
+                }
+
        
     }
 
